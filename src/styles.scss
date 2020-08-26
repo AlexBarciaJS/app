@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+body {
+    font-size: 16px;
+    overflow-x: hidden;
+    background: url(./assets/img/background.webp), linear-gradient(139deg, #353D71 0%, #39276E 100%);
+    background-color: #382d6f;
+    background-position: center;
+    max-width: 1410px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-y: 0px;
+    position: relative;
+    padding: 50px;
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+    overflow: visible !important;
+}

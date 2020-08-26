@@ -1,0 +1,27 @@
+<div class="dialog">
+<h2 mat-dialog-title>Editar Usuario</h2>
+<form [formGroup]="profileForm">
+  <div class="form-input">
+    <label>
+      Nombre de Usuario:
+      <input type="text" formControlName="login" [(ngModel)]="user.login">
+    </label>
+  </div>
+  <div class="form-input">
+    <label>
+      Link de Avatar:
+      <input type="text" formControlName="avatar_url" [(ngModel)]="user.avatar_url">
+    </label>
+  </div>
+  <div class="form-input">
+    <label>
+      Link del Perfil:
+      <input type="text" formControlName="html_url" [(ngModel)]="user.html_url">
+    </label>
+  </div>
+  </form>
+<mat-dialog-actions class="dialog-actions">
+    <fa-icon   class="modal-icons dialog-actions-save" [icon]="save_icon" size="2x" title="Guardar" (click)="save()"></fa-icon>
+    <fa-icon   class="modal-icons dialog-actions-close" [icon]="close_icon" size="2x" title="Cerrar" (click)="close()"></fa-icon>
+</mat-dialog-actions>
+</div>

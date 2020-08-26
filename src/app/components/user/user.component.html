@@ -1,0 +1,58 @@
+<div>
+    <div class="search-input-container">
+        <input class="search-bar" type="text" [formControl]="name" id="search-input" placeholder="Buscar usuario de GitHub...">
+        <fa-icon  *ngIf="is_in_db" class="bar-icons" [icon]="search_icon" size="3x" title="Buscar" (click)="get_github_users()"></fa-icon>
+        <fa-icon  *ngIf="!is_in_db" class="bar-icons" [icon]="database_icon" size="3x" title="Guardar en la Base de Datos" (click)="save_users()"></fa-icon>
+        <fa-icon  *ngIf="!is_in_db" class="bar-icons" [icon]="reload_icon" size="3x" title="Recargar" (click)="get_users()"></fa-icon>
+    </div>
+</div>
+
+<div class="users-grid">
+    <div *ngIf="is_in_db" class="grid-shadow"></div>
+    <mat-grid-list cols="4" rowHeight="400px">
+
+        <mat-grid-tile>
+            <mat-card class="user-card">
+                <img mat-card-image src="{{ new_user.avatar_url }}" alt="Photo of a Shiba Inu">
+                    <mat-card-header>
+                      <mat-card-title>{{ new_user.login }}</mat-card-title>
+                      <!--
+                      <mat-card-subtitle></mat-card-subtitle>
+                      -->
+                    </mat-card-header>
+                <mat-card-content>
+                    <a href="{{ new_user.html_url }}" target="_blank" *ngIf="new_user.html_url">Home Page</a>
+                </mat-card-content>
+                <mat-card-actions *ngIf="is_in_db">
+                    <fa-icon  class="card-icons" [icon]="user_plus_icon" size="3x" title="Nuevo Usuario" (click)="openDialog(new_user)"></fa-icon>
+
+                </mat-card-actions>
+              </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile *ngFor="let git_user of users; let i = index" [attr.data-index]="i">
+
+            <mat-card class="user-card">
+                <div>
+                    <img mat-card-image src="{{ git_user.avatar_url }}" alt="Photo of a Shiba Inu">
+                </div>
+                    <mat-card-header>
+                      <mat-card-title>{{ git_user.login }}</mat-card-title>
+                      <!--
+                      <mat-card-subtitle></mat-card-subtitle>
+                      -->
+                    </mat-card-header>
+                <mat-card-content>
+                    <a href="{{ git_user.html_url }}" target="_blank">Home Page</a>
+                </mat-card-content>
+                <mat-card-actions *ngIf="is_in_db">
+                    <fa-icon  class="card-icons" [icon]="user_edit_icon" size="3x" title="Editar Usuario" (click)="openDialog(git_user)"></fa-icon>
+                    <fa-icon  class="card-icons-red" [icon]="user_delete_icon" size="3x" title="Eliminar Usuario" (click)="delete_user(git_user.id)"></fa-icon>
+                </mat-card-actions>
+              </mat-card>
+
+
+        </mat-grid-tile>
+    </mat-grid-list>
+    
+</div>

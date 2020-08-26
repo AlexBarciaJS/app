@@ -1,0 +1,38 @@
+.form-input {
+    margin: 30px;
+    position: relative;
+}
+
+.dialog {
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+
+input {
+    position: absolute;
+    right: 0;
+}
+
+.dialog-actions {
+    position: relative;
+}
+
+.dialog-actions-save {
+    position: absolute;
+    right: 0;
+    bottom: 25px;
+}
+
+.dialog-actions-close {
+    color: #e56c3c;
+    cursor: pointer;
+}
+
+.dialog-actions-save {
+    color: #2974ca;
+    cursor: pointer;
+}
